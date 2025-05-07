@@ -1,0 +1,5 @@
+<?xml version="1.0"?>
+<launch>
+    <node pkg="gumi_ros" name="yumi_wrapper" type="yumi_go_home.py" output="screen">
+    </node>
+</launch>

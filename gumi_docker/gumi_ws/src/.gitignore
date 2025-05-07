@@ -1,0 +1,6 @@
+abb_egm_rws_managers/
+abb_libegm/
+abb_librws/
+abb_robot_driver/
+abb_robot_driver_interfaces/
+yumi-moveit/

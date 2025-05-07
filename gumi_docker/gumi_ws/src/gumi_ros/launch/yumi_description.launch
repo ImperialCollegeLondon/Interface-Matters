@@ -1,0 +1,15 @@
+<launch>
+    <arg name="rviz" default="true"/>
+    <arg name="yumi_setup" default="default"/>
+    <arg name="arms_hardware_interface" default="PositionJointInterface"/>
+    <arg name="grippers_hardware_interface" default="EffortJointInterface"/>
+    <param name="robot_description" command="$(find xacro)/xacro '$(find yumi_description)/urdf/yumi.urdf.xacro' arms_interface:=$(arg arms_hardware_interface) grippers_interface:=$(arg grippers_hardware_interface) yumi_setup:=$(arg yumi_setup)" />
+    <node name="robot_state_publisher" pkg="robot_state_publisher" type="robot_state_publisher"/>
+    <node name="rviz" pkg="rviz" type="rviz" args="-d $(find yumi_description)/yumi.rviz" if="$(arg rviz)" />
+    
+    <!-- <node name="joint_state_publisher_gui" pkg="joint_state_publisher_gui" type="joint_state_publisher_gui" if="$(arg rviz)" /> -->
+    <node name="joint_state_publisher" pkg="joint_state_publisher" type="joint_state_publisher" unless="$(arg rviz)" >
+        <param name="rate" value="30"/>
+        <rosparam param="source_list">["/yumi/egm/joint_states", "/yumi/gripper_states"]</rosparam>
+    </node>
+</launch>

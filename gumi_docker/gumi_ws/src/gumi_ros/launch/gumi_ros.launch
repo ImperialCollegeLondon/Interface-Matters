@@ -1,0 +1,5 @@
+<?xml version="1.0"?>
+<launch>
+    <node pkg="gumi_ros" name="gumi_ros" type="gumi.py" output="screen">
+    </node>
+</launch>
